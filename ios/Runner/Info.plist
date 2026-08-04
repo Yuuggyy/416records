@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>416 Records</string>
+    <key>CFBundleDisplayName</key>
+    <string>416 Records</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.records416.app</string>
+
+    <!-- AdMob App ID — Replace with your real AdMob App ID -->
+    <key>GADApplicationIdentifier</key>
+    <string>ca-app-pub-3940256099942544~3347511713</string>
+
+    <!-- SKAdNetwork for iOS 14+ ad attribution -->
+    <key>SKAdNetworkItems</key>
+    <array>
+        <dict>
+            <key>SKAdNetworkIdentifier</key>
+            <string>cstr6suwn9.skadnetwork</string>
+        </dict>
+    </array>
+
+    <!-- App Transport Security -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+
+    <!-- Location for better ad targeting (optional) -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Used for relevant advertising content.</string>
+</dict>
+</plist>

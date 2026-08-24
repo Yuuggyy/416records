@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>416 Records — Label & Competition</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+:root{--dark:#1a1a2e;--darker:#16213e;--gold:#FFD700;--amber:#FFA726;--bg:#f5f5f5;--c:#fff;--g:#757575}
+body{background:var(--bg);max-width:430px;margin:0 auto;min-height:100vh;overflow-x:hidden}
+.appbar{background:var(--dark);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.appbar h1{font-size:20px;font-weight:800}
+.appbar button{background:none;border:none;color:#fff;font-size:20px;cursor:pointer}
+.featured{margin:16px;height:200px;border-radius:16px;background:linear-gradient(135deg,var(--dark),var(--darker));position:relative;cursor:pointer;overflow:hidden}
+.featured .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:64px;color:rgba(255,255,255,0.5)}
+.featured .info{position:absolute;bottom:16px;left:16px}
+.featured .info small{color:rgba(255,255,255,0.6);font-size:12px}
+.featured .info h2{color:#fff;font-size:22px;font-weight:800}
+.featured .ad-tag{display:inline-flex;align-items:center;gap:4px;color:var(--amber);font-size:11px;margin-top:4px}
+.section{padding:0 16px;margin-bottom:24px}
+.section h3{font-size:18px;font-weight:800;color:var(--dark);margin-bottom:12px;padding-left:0}
+.ep-card{background:#fff;border-radius:12px;padding:12px;margin-bottom:8px;display:flex;align-items:center;gap:12px;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+.ep-card:active{transform:scale(0.98)}
+.ep-num{width:40px;height:40px;border-radius:50%;background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.ep-info{flex:1}
+.ep-title{font-size:14px;font-weight:600;color:var(--dark)}
+.ep-desc{font-size:12px;color:var(--g)}
+.ep-ads{color:var(--amber);font-size:16px}
+.ep-play{color:var(--dark);font-size:18px}
+.vote-card{background:var(--dark);border-radius:16px;padding:20px;text-align:center;color:#fff}
+.vote-card h4{font-size:16px;font-weight:600;margin-bottom:8px}
+.vote-card p{font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:16px}
+.vote-btn{padding:12px 24px;background:var(--gold);color:var(--dark);border:none;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer}
+.vote-btn:active{transform:scale(0.97)}
+.mini-stats{background:#fff;border-radius:12px;padding:16px;margin:0 16px 16px}
+.mini-stats h4{font-size:14px;font-weight:700;margin-bottom:8px}
+.stat-row{display:flex;justify-content:space-between;font-size:13px;padding:2px 0}
+.stat-row .gold{color:var(--gold);font-weight:700}
+.ad-banner{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;height:50px;background:var(--dark);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);font-size:12px;z-index:100}
+.ad-banner span{margin-left:8px}
+.ad-banner .close{margin-left:16px;cursor:pointer;font-size:14px;color:rgba(255,255,255,0.3)}
+.ad-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;display:flex;align-items:center;justify-content:center}
+.ad-modal{background:var(--dark);border-radius:20px;padding:40px;text-align:center;max-width:320px;width:90%}
+.ad-count{font-size:48px;font-weight:800;color:var(--amber);margin-bottom:16px}
+.ad-content{font-size:16px;color:#fff;margin-bottom:20px}
+.ad-skip{padding:12px 24px;background:var(--gold);color:var(--dark);border:none;border-radius:12px;font-weight:700;cursor:pointer;font-size:15px}
+.ad-info{font-size:12px;color:rgba(255,255,255,0.5);margin-top:12px}
+.video-modal{width:100%;max-width:430px;background:#000;min-height:100vh}
+.video-header{padding:16px;text-align:right}
+.toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:#4CAF50;color:#fff;padding:12px 24px;border-radius:12px;font-size:14px;z-index:1000;animation:toastIn 0.3s}
+@keyframes toastIn{from{opacity:0;transform:translate(-50%,20px)}to{opacity:1;transform:translate(-50%,0)}}
+.stats-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9998;align-items:center;justify-content:center}
+.stats-modal .box{background:#fff;border-radius:20px;padding:24px;max-width:350px;width:90%}
+.stats-modal h2{font-size:18px;font-weight:800;margin-bottom:16px;text-align:center}
+.footer{text-align:center;padding:16px;font-size:12px;color:var(--g)}
+</style>
+</head>
+<body>
+<div class="appbar"><h1>416 Records</h1><button onclick="showAdStats()">📊</button></div>
+<div class="featured" onclick="showPreRoll('Recrutement')">
+<div class="play">▶️</div>
+<div class="info"><small>Episode 1</small><h2>Recrutement</h2><div class="ad-tag">🎬 Pub pre-roll 10s</div></div>
+</div>
+<div class="section"><h3>Episodes</h3><div id="episodeList"></div></div>
+<div class="section"><h3>Exclusivités (débloquer avec pub)</h3><div id="exclusiveList"></div></div>
+<div class="section"><h3>Vote pour ton artiste</h3>
+<div class="vote-card"><h4>Vote pour ton candidat préféré</h4><p>1 vote = 1 vote gratuit (1x/jour)<br>Votes supplémentaires = regarde une pub</p><button class="vote-btn" onclick="showInterstitial(()=>showToast('Vote enregistré!'))">🗳️ Voter maintenant</button></div>
+</div>
+<div id="miniStats" class="mini-stats" style="display:none">
+<h4>📊 Revenus publicitaires</h4>
+<div class="stat-row"><span>Pre-roll</span><span class="gold" id="statPreRoll">0$</span></div>
+<div class="stat-row"><span>Interstitial</span><span class="gold" id="statInterstitial">0$</span></div>
+<div class="stat-row"><span>Rewarded</span><span class="gold" id="statRewarded">0$</span></div>
+<div class="stat-row"><span>Total impressions</span><span id="statImpressions">0</span></div>
+<div class="stat-row" style="border-top:1px solid #eee;padding-top:8px;margin-top:4px"><strong>Total</strong><strong class="gold" id="statTotal">0$</strong></div>
+</div>
+<div class="footer">Inspire by YuuStore</div>
+<div class="ad-banner" id="adBanner"><span>📢</span>Publicité<span class="close" onclick="closeBanner()">✕</span></div>
+<div class="stats-modal" id="statsModal"><div class="box"><h2>📊 Statistiques pub</h2><p style="text-align:center;color:#757575;font-size:14px;margin-bottom:16px">Revenus estimés basés sur eCPM</p><div class="stat-row"><span>Pre-roll (eCPM $5)</span><span id="statPreRoll2">0$</span></div><div class="stat-row"><span>Interstitial (eCPM $5)</span><span id="statInterstitial2">0$</span></div><div class="stat-row"><span>Rewarded (eCPM $15)</span><span id="statRewarded2">0$</span></div><div class="stat-row"><span>Banner (eCPM $0.5)</span><span id="statBanner2">0$</span></div><div class="stat-row" style="border-top:1px solid #eee;padding-top:8px;margin-top:4px"><strong>Total</strong><strong id="statTotal2">0$</strong></div><button onclick="closeStats()" style="width:100%;margin-top:16px;padding:12px;background:#1a1a2e;color:#fff;border:none;border-radius:12px;font-weight:600;cursor:pointer">Fermer</button></div></div>
+<script src="app.js"></script>
+</body>
+</html>
